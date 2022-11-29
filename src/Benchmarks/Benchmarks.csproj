@@ -10,6 +10,7 @@
   <ItemGroup>
     <PackageReference Include="BenchmarkDotNet" Version="0.13.2" />
     <PackageReference Include="Spectre.Console" Version="0.45.1-preview.0.43" />
+    <PackageReference Include="Spectre.Console.Cli" Version="0.45.1-preview.0.43" />
   </ItemGroup>
 
   <ItemGroup>
