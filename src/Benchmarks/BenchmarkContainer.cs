@@ -14,16 +14,16 @@ public class BenchmarkContainer<TBenchmark> where TBenchmark : IBenchmark, new()
     }
 
     [Benchmark(Baseline = true)]
-    public void Original() => _benchmark.Original();
+    public object Original() => _benchmark.Original();
 
     [Benchmark]
-    public void New() => _benchmark.New();
+    public object New() => _benchmark.New();
 }
 
 public interface IBenchmark
 {
-    void Original();
+    object Original();
 
-    void New();
+    object New();
 }
 
