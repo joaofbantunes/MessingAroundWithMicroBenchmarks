@@ -9,6 +9,11 @@ public class ThirdBenchmark : IBenchmark<int>
         Session.Third.GlobalSetup();
     }
     
+    public void IterationSetup()
+    {
+        // nothing to do here   
+    }
+    
     public int Original() => Starting.Third.Run();
 
     public int New() => Session.Third.Run();

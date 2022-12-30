@@ -1,4 +1,5 @@
 ﻿using BenchmarkDotNet.Attributes;
+using BenchmarkDotNet.Jobs;
 
 namespace Benchmarks;
 
@@ -13,6 +14,9 @@ public class BenchmarkContainer<TBenchmark, TReturn> where TBenchmark : IBenchma
 
     [GlobalSetup]
     public void GlobalSetup() => _benchmark.GlobalSetup();
+    
+    [IterationSetup]
+    public void IterationSetup() => _benchmark.IterationSetup();
 
     [Benchmark(Baseline = true)]
     public TReturn Original() => _benchmark.Original();
@@ -24,6 +28,8 @@ public class BenchmarkContainer<TBenchmark, TReturn> where TBenchmark : IBenchma
 public interface IBenchmark<TReturn>
 {
     void GlobalSetup();
+
+    void IterationSetup();
     
     TReturn Original();
 
