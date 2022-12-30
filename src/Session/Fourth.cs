@@ -4,6 +4,7 @@ namespace Session;
 
 public static class Fourth
 {
+    [MethodImpl(MethodImplOptions.NoInlining)]
     public static int Run() => CalculatorInvoker(new Multiplier());
 
     [MethodImpl(MethodImplOptions.NoInlining)]

@@ -9,6 +9,7 @@ public static class Second
         _collectionWithRepeatedValues = Enumerable.Range(0, 1000).SelectMany(i => new[] { i, i, i }).ToArray();
     }
 
+    [MethodImpl(MethodImplOptions.NoInlining)]
     public static IEnumerable<int> Run()
     {
         var distinctValues = new List<int>();

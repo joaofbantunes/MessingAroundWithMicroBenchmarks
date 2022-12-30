@@ -9,9 +9,10 @@ public static class Second
         _collectionWithRepeatedValues = Enumerable.Range(0, 1000).SelectMany(i => new[] { i, i, i }).ToArray();
     }
 
-    // HashSet is ~O(1) when checking existance
+    [MethodImpl(MethodImplOptions.NoInlining)]
     public static IEnumerable<int> Run()
     {
+        // HashSet is ~O(1) when checking existence
         var distinctValues = new HashSet<int>();
 
         foreach (var i in _collectionWithRepeatedValues)

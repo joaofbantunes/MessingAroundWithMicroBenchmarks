@@ -4,6 +4,7 @@ namespace Reference;
 
 public static class Fourth
 {
+    [MethodImpl(MethodImplOptions.NoInlining)]
     public static int Run() => CalculatorInvoker(new Multiplier());
 
     // using generics avoids boxing the struct

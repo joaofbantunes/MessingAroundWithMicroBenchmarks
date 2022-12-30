@@ -9,6 +9,7 @@ public static class Third
         _collection = Enumerable.Range(0, 1000).ToArray();
     }
 
+    [MethodImpl(MethodImplOptions.NoInlining)]
     public static int Run()
     {
         var sum = 0;

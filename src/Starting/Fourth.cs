@@ -1,9 +1,8 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace Starting;
+﻿namespace Starting;
 
 public static class Fourth
 {
+    [MethodImpl(MethodImplOptions.NoInlining)]
     public static int Run() => CalculatorInvoker(new Multiplier());
 
     [MethodImpl(MethodImplOptions.NoInlining)]

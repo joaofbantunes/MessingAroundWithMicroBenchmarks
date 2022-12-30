@@ -9,6 +9,7 @@ public static class Third
         _collection = Enumerable.Range(0, 1000).ToArray();
     }
 
+    [MethodImpl(MethodImplOptions.NoInlining)]
     public static int Run()
     {
         // having a local reference lets the compiler optimize away the need to do bounds check
