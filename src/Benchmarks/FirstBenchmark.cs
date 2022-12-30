@@ -1,13 +1,13 @@
 ﻿namespace Benchmarks;
 
-public class FirstBenchmark : IBenchmark
+public class FirstBenchmark : IBenchmark<bool>
 {
     public void GlobalSetup()
     {
         // nothing to do here   
     }
 
-    public object Original() => Starting.First.Run();
+    public bool Original() => Starting.First.Run();
 
-    public object New() => Session.First.Run();
+    public bool New() => Session.First.Run();
 }

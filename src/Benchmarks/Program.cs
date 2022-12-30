@@ -25,14 +25,18 @@ public class BenchmarkCommand : Command<BenchmarkCommand.Settings>
                 .GetExecutingAssembly()
                 .GetTypes()
                 .Where(t => t is { IsClass: true, IsAbstract: false } &&
-                            t.GetInterfaces().Contains(typeof(IBenchmark)));
+                            t.GetInterfaces().Any(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IBenchmark<>)));
 
         var benchmark = ParseProvidedBenchmarkIfAny(settings.Benchmark, benchmarks)
                         ?? AnsiConsole.Prompt(new SelectionPrompt<Type> { Converter = t => t.Name }
                             .Title("What benchmark to run?")
                             .AddChoices(benchmarks));
 
-        _ = BenchmarkRunner.Run(typeof(BenchmarkContainer<>).MakeGenericType(benchmark));
+        var returnType = benchmark.GetInterfaces()
+            .First(i => i.IsGenericType && i.GetGenericTypeDefinition() == typeof(IBenchmark<>)).GenericTypeArguments
+            .Single();
+
+        _ = BenchmarkRunner.Run(typeof(BenchmarkContainer<,>).MakeGenericType(benchmark, returnType));
 
         return 0;
 

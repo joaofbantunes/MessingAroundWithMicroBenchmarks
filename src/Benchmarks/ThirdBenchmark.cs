@@ -1,7 +1,7 @@
 ﻿namespace Benchmarks;
 
 
-public class ThirdBenchmark : IBenchmark
+public class ThirdBenchmark : IBenchmark<int>
 {
     public void GlobalSetup()
     {
@@ -9,7 +9,7 @@ public class ThirdBenchmark : IBenchmark
         Session.Third.GlobalSetup();
     }
     
-    public object Original() => Starting.Third.Run();
+    public int Original() => Starting.Third.Run();
 
-    public object New() => Session.Third.Run();
+    public int New() => Session.Third.Run();
 }

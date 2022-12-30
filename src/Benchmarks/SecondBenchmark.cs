@@ -1,7 +1,7 @@
 ﻿namespace Benchmarks;
 
 
-public class SecondBenchmark : IBenchmark
+public class SecondBenchmark : IBenchmark<IEnumerable<int>>
 {
     public void GlobalSetup()
     {
@@ -9,7 +9,7 @@ public class SecondBenchmark : IBenchmark
         Session.Second.GlobalSetup();
     }
     
-    public object Original() => Starting.Second.Run();
+    public IEnumerable<int> Original() => Starting.Second.Run();
 
-    public object New() => Session.Second.Run();
+    public IEnumerable<int> New() => Session.Second.Run();
 }

@@ -7,26 +7,26 @@ namespace Benchmarks;
 // would not normally add the following, but just trying to make things faster
 // as we'll use this in a mob programming session during an event
 //[SimpleJob(invocationCount: 25_000_000)]
-public class BenchmarkContainer<TBenchmark> where TBenchmark : IBenchmark, new()
+public class BenchmarkContainer<TBenchmark, TReturn> where TBenchmark : IBenchmark<TReturn>, new()
 {
-    private readonly IBenchmark _benchmark = new TBenchmark();
+    private readonly TBenchmark _benchmark = new TBenchmark();
 
     [GlobalSetup]
     public void GlobalSetup() => _benchmark.GlobalSetup();
 
     [Benchmark(Baseline = true)]
-    public object Original() => _benchmark.Original();
+    public TReturn Original() => _benchmark.Original();
 
     [Benchmark]
-    public object New() => _benchmark.New();
+    public TReturn New() => _benchmark.New();
 }
 
-public interface IBenchmark
+public interface IBenchmark<TReturn>
 {
     void GlobalSetup();
     
-    object Original();
+    TReturn Original();
 
-    object New();
+    TReturn New();
 }
 
