@@ -1,23 +1,24 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace Session;
+﻿namespace Session;
 
 public static class Fourth
 {
-    [MethodImpl(MethodImplOptions.NoInlining)]
-    public static int Run() => CalculatorInvoker(new Multiplier());
+    private static IEnumerable<int> _collection = Array.Empty<int>();
+
+    public static void GlobalSetup()
+    {
+        _collection = Enumerable.Range(0, 100_000_000).Select(_ => 1).ToArray();
+    }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    private static int CalculatorInvoker(ICalculateSomething calculator)
-        => calculator.Calculate(123456, 654321);
-}
+    public static int Run()
+    {
+        var sum = 0;
 
-public interface ICalculateSomething
-{
-    int Calculate(int first, int second);
-}
-
-public struct Multiplier : ICalculateSomething
-{
-    public int Calculate(int first, int second) => first * second;
+        foreach (var value in _collection)
+        {
+            sum += value;
+        }
+        
+        return sum;
+    }
 }

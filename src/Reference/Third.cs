@@ -6,7 +6,7 @@ public static class Third
 
     public static void GlobalSetup()
     {
-        _collection = Enumerable.Range(0, 1000).ToArray();
+        _collection = Enumerable.Range(0, 100_000_000).Select(_ => 1).ToArray();
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]

@@ -1,24 +1,26 @@
-﻿using System.Runtime.CompilerServices;
-
-namespace Reference;
+﻿namespace Reference;
 
 public static class Fourth
 {
+    // probably unexpected for most devs, using interfaces, can have performance impacts
+    // more info here https://github.com/dotnet/runtime/issues/7291
+    private static int[] _collection = Array.Empty<int>();
+
+    public static void GlobalSetup()
+    {
+        _collection = Enumerable.Range(0, 100_000_000).ToArray();
+    }
+
     [MethodImpl(MethodImplOptions.NoInlining)]
-    public static int Run() => CalculatorInvoker(new Multiplier());
+    public static int Run()
+    {
+        var sum = 0;
 
-    // using generics avoids boxing the struct
-    [MethodImpl(MethodImplOptions.NoInlining)]
-    private static int CalculatorInvoker<TCalculateSomething>(TCalculateSomething calculator) where TCalculateSomething : ICalculateSomething
-        => calculator.Calculate(123456, 654321);
-}
+        foreach (var value in _collection)
+        {
+            sum += value;
+        }
 
-public interface ICalculateSomething
-{
-    int Calculate(int first, int second);
-}
-
-public struct Multiplier : ICalculateSomething
-{
-    public int Calculate(int first, int second) => first * second;
+        return sum;
+    }
 }

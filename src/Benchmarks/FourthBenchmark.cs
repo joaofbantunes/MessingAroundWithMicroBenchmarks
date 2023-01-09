@@ -1,12 +1,14 @@
 ﻿namespace Benchmarks;
 
+
 public class FourthBenchmark : IBenchmark<int>
 {
     public void GlobalSetup()
     {
-        // nothing to do here
+        Starting.Fourth.GlobalSetup();
+        Session.Fourth.GlobalSetup();
     }
-
+    
     public void IterationSetup()
     {
         // nothing to do here   
