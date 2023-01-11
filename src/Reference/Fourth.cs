@@ -8,7 +8,7 @@ public static class Fourth
 
     public static void GlobalSetup()
     {
-        _collection = Enumerable.Range(0, 100_000_000).ToArray();
+        _collection = Enumerable.Range(0, 1_000_000).Select(_ => 1).ToArray();
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]

@@ -8,7 +8,7 @@ public static class Fifth
     {
         var sum = 0;
 
-        for (var i = 0; i < 50_000_000; i++)
+        for (var i = 0; i < 1_000_000; i++)
         {
             sum += FuncInvoker(input => input * i);
         }

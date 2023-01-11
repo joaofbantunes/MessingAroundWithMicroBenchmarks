@@ -6,11 +6,6 @@ public class FirstBenchmark : IBenchmark<bool>
     {
         // nothing to do here   
     }
-
-    public void IterationSetup()
-    {
-        // nothing to do here   
-    }
     
     public bool Original() => Starting.First.Run();
 

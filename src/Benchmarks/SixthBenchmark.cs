@@ -6,11 +6,6 @@ public class SixthBenchmark : IBenchmark<int>
     {
         // nothing to do here
     }
-
-    public void IterationSetup()
-    {
-        // nothing to do here   
-    }
     
     public int Original() => Starting.Sixth.Run();
 
