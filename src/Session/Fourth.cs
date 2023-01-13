@@ -2,7 +2,9 @@
 
 public static class Fourth
 {
-    private static IEnumerable<int> _collection = Array.Empty<int>();
+    // probably unexpected for most devs, using interfaces, can have performance impacts
+    // more info here https://github.com/dotnet/runtime/issues/7291
+    private static int[] _collection = Array.Empty<int>();
 
     public static void GlobalSetup()
     {
@@ -18,7 +20,7 @@ public static class Fourth
         {
             sum += value;
         }
-        
+
         return sum;
     }
 }

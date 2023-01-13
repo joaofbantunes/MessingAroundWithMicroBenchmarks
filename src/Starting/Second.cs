@@ -10,7 +10,7 @@ public static class Second
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    public static IEnumerable<int> Run()
+    public static IReadOnlyCollection<int> Run()
     {
         var distinctValues = new List<int>();
         

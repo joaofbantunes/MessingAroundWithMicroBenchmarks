@@ -10,13 +10,15 @@ public static class Fifth
 
         for (var i = 0; i < 1_000_000; i++)
         {
-            sum += FuncInvoker(input => input * i);
+            // passing the parameter explicitly, removing the closure allocation,
+            // means we don't allocate something new on every iteration 
+            sum += FuncInvoker(static (first, second) => first * second, i);
         }
 
         return sum;
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    private static int FuncInvoker(Func<int, int> func)
-        => func(123456);
+    private static int FuncInvoker(Func<int, int, int> func, int someValue)
+        => func(123456, someValue);
 }

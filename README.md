@@ -4,10 +4,9 @@ Repository with some micro benchmarks, using BenchmarkDotNet, to play around try
 
 ## Repository structure
 
-- Benchmarks - contains the benchmark application
+- Benchmarks - contains the benchmark application (it's over-engineered, just to try to make things simpler for the presentation)
 - Starting - contains the starting solutions needing optimization
-- Session - initially contains the solutions needing optimization, later the solutions developed during a learning mob programming session
-- Reference - contains ideas of possible solutions
+- Session - contains ideas of possible solutions we looked into during the presentation
 
 ## Running benchmarks
 

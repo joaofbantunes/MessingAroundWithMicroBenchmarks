@@ -5,8 +5,9 @@ public static class Sixth
     [MethodImpl(MethodImplOptions.NoInlining)]
     public static int Run() => CalculatorInvoker(new Multiplier());
 
+    // using generics avoids boxing the struct
     [MethodImpl(MethodImplOptions.NoInlining)]
-    private static int CalculatorInvoker(ICalculateSomething calculator)
+    private static int CalculatorInvoker<TCalculateSomething>(TCalculateSomething calculator) where TCalculateSomething : ICalculateSomething
         => calculator.Calculate(123456, 654321);
 }
 

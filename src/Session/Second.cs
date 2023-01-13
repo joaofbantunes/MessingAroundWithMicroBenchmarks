@@ -10,18 +10,16 @@ public static class Second
     }
 
     [MethodImpl(MethodImplOptions.NoInlining)]
-    public static IEnumerable<int> Run()
+    public static IReadOnlyCollection<int> Run()
     {
-        var distinctValues = new List<int>();
-        
+        // HashSet is ~O(1) when checking existence
+        var distinctValues = new HashSet<int>();
+
         foreach (var i in _collectionWithRepeatedValues)
         {
-            if (!distinctValues.Contains(i))
-            {
-                distinctValues.Add(i);
-            }
+            _ = distinctValues.Add(i);
         }
-        
+
         return distinctValues;
     }
 }

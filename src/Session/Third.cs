@@ -12,11 +12,13 @@ public static class Third
     [MethodImpl(MethodImplOptions.NoInlining)]
     public static int Run()
     {
+        // having a local reference lets the compiler optimize away the need to do bounds check
+        var localCollectionReference = _collection;
         var sum = 0;
         
-        for (var i = 0; i < _collection.Length; ++i)
+        for (var i = 0; i < localCollectionReference.Length; ++i)
         {
-            sum += _collection[i];
+            sum += localCollectionReference[i];
         }
 
         return sum;

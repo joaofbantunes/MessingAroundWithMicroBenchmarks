@@ -14,7 +14,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Reference\Reference.csproj" />
     <ProjectReference Include="..\Session\Session.csproj" />
     <ProjectReference Include="..\Starting\Starting.csproj" />
   </ItemGroup>
